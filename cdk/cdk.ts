@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import "./env";
-import { App, RemovalPolicy, Stack } from "aws-cdk-lib";
+import { App, RemovalPolicy, Stack, CfnOutput } from "aws-cdk-lib";
 import { Construct } from "constructs";
 import path from "path";
 import { NodejsFunction } from "aws-cdk-lib/aws-lambda-nodejs";
@@ -58,6 +58,13 @@ class FrontendStack extends Stack {
     new BucketDeployment(this, "react-deploy", {
       destinationBucket: bucket,
       sources: [Source.asset("./cdk/frontend/build")],
+    });
+
+    /**
+     * Prints the s3 bucket website url in the console
+     */
+    new CfnOutput(this, "s3-bucket-website-url", {
+      value: bucket.bucketWebsiteUrl,
     });
   }
 }
