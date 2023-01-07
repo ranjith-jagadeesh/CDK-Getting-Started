@@ -1,4 +1,4 @@
-# CDK-Getting-Started
+# CDK-Getting-Started-Pack
 
 ## What is CDK?
 
