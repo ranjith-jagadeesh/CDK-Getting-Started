@@ -8,7 +8,7 @@
 **/node_modules
 
 # cdk out
-/.cdk
+/cdk.out
 **/build
 
 # testing
