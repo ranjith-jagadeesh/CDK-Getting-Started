@@ -7,6 +7,10 @@
 
 **/node_modules
 
+# cdk out
+/.cdk
+**/build
+
 # testing
 /coverage
 

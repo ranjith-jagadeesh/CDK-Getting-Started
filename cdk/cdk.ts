@@ -10,32 +10,51 @@ import { LambdaRestApi } from "aws-cdk-lib/aws-apigateway";
 
 const app = new App();
 
+/**
+ * Backend Stack deploys Nodejs application as Lambda and create's a Rest Api
+ */
 class BackendStack extends Stack {
   public lambdaRestApi: LambdaRestApi;
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
+    /**
+     * Create a new Lambda Function
+     */
     const lambda = new NodejsFunction(this, "backend-lambda", {
       entry: path.resolve(__dirname, "backend/index.js"),
       memorySize: 128,
     });
 
+    /**
+     * Create a Rest Api for Lambda
+     */
     this.lambdaRestApi = new LambdaRestApi(this, "rest-api", {
       handler: lambda,
     });
   }
 }
 
+/**
+ * Frontend Stack deploy's React application in S3 Bucket
+ */
 class FrontendStack extends Stack {
   constructor(scope: Construct, id: string) {
     super(scope, id);
 
+    /**
+     * Create new S3 Bucket
+     */
     const bucket = new Bucket(this, "react-bucket", {
       publicReadAccess: true,
       websiteIndexDocument: "index.html",
       removalPolicy: RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
     });
 
+    /**
+     * Deploy React application in S3 Bucket
+     */
     new BucketDeployment(this, "react-deploy", {
       destinationBucket: bucket,
       sources: [Source.asset("./cdk/frontend/build")],
@@ -43,5 +62,8 @@ class FrontendStack extends Stack {
   }
 }
 
+/**
+ * Create a instance of Backend and Frontend Stack
+ */
 new BackendStack(app, "backend");
 new FrontendStack(app, "frontend");
