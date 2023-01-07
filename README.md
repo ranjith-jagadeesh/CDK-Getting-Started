@@ -6,7 +6,7 @@ AWS CDK is a framework for defining cloud infrastructure in code and provisionin
 
 ## What CDK Getting Started Pack Offers?
 
-When new project is started, in most of the cases, backend and frontend framework would be Node Js and React Js respectively. This is an AWS Deployment Kit, where Backend Server(Node Js) is deployed as Lambda Application and Frontend Server(React) is deployed as static website in AWS S3 Bucket.
+When we are starting a new project, we want to start the project with language/framework which is more matured and has large community support. One thing that comes to our mind with respect to backend and frontend framework would be NodeJs and ReactJs respectively. Here, Backend Server(Node Js) is deployed as Lambda Application and Frontend Server(React) is deployed as static website in AWS S3 Bucket using Cloud Development Kit(CDK).
 
 ## Steps to get started
 
@@ -27,7 +27,7 @@ When new project is started, in most of the cases, backend and frontend framewor
 
 Now you have successfully deployed your Node and React Application to AWS.
 
-You can modify the code inside backend and frontend folder to suit your needs and deploy it.
+Now you can start modifying the code inside backend and frontend folder and deploy the same seamlessly.
 
 If you are facing any issues, create a [new issue](https://github.com/ranjith-jagadeesh/CDK-Getting-Started/issues/new), I will address as soon as I can.
 
